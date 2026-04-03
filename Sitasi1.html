@@ -1,0 +1,200 @@
+<!-- Library Utama (Tetap menggunakan CDN agar ringan) -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  /* Menghilangkan padding bawaan blogger untuk section ini */
+  .post-body { padding: 0 !important; }
+  #ahmad-portfolio-root {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #1e293b;
+    line-height: 1.6;
+    margin: -30px -20px; /* Menutupi margin default blogger */
+  }
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .grad-blue {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  }
+  .text-grad {
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .pub-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pub-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  [x-cloak] { display: none !important; }
+</style>
+
+<div id="ahmad-portfolio-root" x-data="portfolioData()" x-cloak>
+  
+  <!-- Hero Section -->
+  <header class="relative overflow-hidden bg-slate-50 py-20 px-6">
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+    <div class="max-w-6xl mx-auto relative z-10 text-center">
+      <div data-aos="fade-down" class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm border border-blue-50 mb-8">
+        <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
+        <span class="text-xs font-bold uppercase tracking-widest text-blue-800">Akademisi & Peneliti IAIN Parepare</span>
+      </div>
+      <h1 data-aos="zoom-out" class="text-4xl md:text-6xl font-black text-slate-900 mb-6">
+        Ahmad <span class="text-grad"> atau Ahmad Alimuddin</span>
+      </h1>
+      <p data-aos="fade-up" class="text-lg text-slate-600 max-w-2xl mx-auto mb-10">
+        Menjembatani nilai Syariat dengan dinamika Kontemporer: Dari Hukum Keluarga hingga Teknologi Blockchain.
+      </p>
+      
+      <!-- Stats Badges -->
+      <div class="flex flex-wrap justify-center gap-4 mb-10" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 w-32">
+          <div class="text-2xl font-bold text-blue-600">16</div>
+          <div class="text-xs text-slate-400 uppercase font-semibold">Sitasi</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 w-32">
+          <div class="text-2xl font-bold text-blue-600">3</div>
+          <div class="text-xs text-slate-400 uppercase font-semibold">H-Index</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 w-32">
+          <div class="text-2xl font-bold text-blue-600">25</div>
+          <div class="text-xs text-slate-400 uppercase font-semibold">Usia</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Bio & Expertise -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <h2 class="text-3xl font-bold mb-6 text-slate-800 underline decoration-blue-500 decoration-4 underline-offset-8">Biografi Singkat</h2>
+        <p class="text-slate-600 mb-4 leading-relaxed text-justify">
+          Ahmad Alimuddin (Lahir 2001) adalah akademisi muda produktif di <strong>IAIN Parepare</strong>. Fokus studinya mencakup Hukum Keluarga Islam dan Ilmu Falak. Sejak 2021, ia telah menerbitkan puluhan artikel ilmiah yang menggabungkan pendekatan fikih klasik dengan perspektif humanis kontemporer.
+        </p>
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-microchip text-blue-500"></i>
+            <span class="text-sm font-medium">Digital Law</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-moon text-blue-500"></i>
+            <span class="text-sm font-medium">Ilmu Falak</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-users text-blue-500"></i>
+            <span class="text-sm font-medium">Family Law</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-leaf text-blue-500"></i>
+            <span class="text-sm font-medium">Climate Crisis</span>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-left" class="grad-blue p-8 rounded-3xl text-white shadow-xl relative overflow-hidden">
+        <i class="fas fa-quote-left absolute top-4 left-4 opacity-20 text-6xl"></i>
+        <p class="italic text-lg mb-6 relative z-10">
+          "Mengintegrasikan teknologi blockchain dan analisis Maqasid Syariah untuk menjawab tantangan hukum keluarga di era digital."
+        </p>
+        <div class="flex items-center space-x-4">
+          <div class="h-1 w-12 bg-white opacity-50"></div>
+          <span class="font-bold tracking-widest uppercase text-sm">Visi Akademik</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section class="py-16 px-6 bg-slate-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
+        <div>
+          <h2 class="text-3xl font-bold text-slate-800">Daftar Publikasi</h2>
+          <p class="text-slate-500">Arsip karya ilmiah 2021 - 2026</p>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="relative group">
+          <input type="text" x-model="search" placeholder="Cari judul/tahun/isu..." 
+            class="w-full md:w-80 pl-12 pr-4 py-3 rounded-xl border-none ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500 shadow-sm transition-all outline-none">
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors"></i>
+        </div>
+      </div>
+
+      <!-- Publication Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <template x-for="pub in filteredPublications" :key="pub.id">
+          <div class="pub-card bg-white p-6 rounded-2xl border border-slate-100 flex flex-col justify-between" data-aos="fade-up">
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-md" x-text="pub.year"></span>
+                <div class="flex items-center space-x-1 text-xs text-orange-500 font-bold">
+                  <i class="fas fa-star"></i>
+                  <span x-text="pub.citations + ' Sitasi'"></span>
+                </div>
+              </div>
+              <h3 class="font-bold text-slate-800 mb-3 text-sm leading-snug group-hover:text-blue-600" x-text="pub.title"></h3>
+            </div>
+            <div class="mt-4 pt-4 border-t border-slate-50">
+              <p class="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Co-Authors</p>
+              <p class="text-xs text-slate-600 truncate" x-text="pub.authors"></p>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Empty State -->
+      <div x-show="filteredPublications.length === 0" class="text-center py-20">
+        <i class="fas fa-folder-open text-4xl text-slate-300 mb-4"></i>
+        <p class="text-slate-500">Publikasi tidak ditemukan dengan kata kunci tersebut.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-white text-center border-t border-slate-100">
+    <p class="text-sm text-slate-400">
+      &copy; 2026 <strong>Ahmad Alimuddin</strong>. All Rights Reserved.<br>
+      <span class="text-xs uppercase tracking-widest">IAIN Parepare • Indonesia</span>
+    </p>
+  </footer>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Inisialisasi AOS
+  setTimeout(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, 100);
+
+  function portfolioData() {
+    return {
+      search: '',
+      publications: [
+        { id: 1, title: "Tinjauan Maqāṣid Syari’ah terhadap Perjanjian Perkawinan", year: "2024", citations: 5, authors: "R Basri, A Alimuddin" },
+        { id: 2, title: "Problematika Penerapan Hukum Perkawinan Islam di Era Digital", year: "2024", citations: 4, authors: "Ahmad Alimuddin" },
+        { id: 3, title: "Analysis of Sharia Fatwas on Zakat for Renewable Energy", year: "2025", citations: 3, authors: "A Alimuddin, I Haq" },
+        { id: 4, title: "Peluang Teknologi Blockchain untuk Pencatatan Pernikahan", year: "2025", citations: 2, authors: "A Alimuddin, M Al-Amin" },
+        { id: 5, title: "Safeguarding Pilgrims from Fraud: Consumer Protection", year: "2026", citations: 0, authors: "Abdillah, Ahmad, R Jannah" },
+        { id: 6, title: "Adopsi Anak oleh Komunitas LGBTQ+ dalam Perspektif Fikih", year: "2026", citations: 0, authors: "A Muchsin, Ahmad" },
+        { id: 7, title: "Calibration of the Oldest Al-Mujahidin Mosque", year: "2023", citations: 1, authors: "ABDK Faiz, Ahmad" },
+        { id: 8, title: "Moral Negotiations: Sugar Daddy Phenomenon Among Muslim Youth", year: "2025", citations: 0, authors: "Naharuddin, FNS Shabri" },
+        { id: 9, title: "Historical Analysis of Uang Panai & Inflation Impact", year: "2025", citations: 1, authors: "A Ahmad, M Said" },
+        { id: 10, title: "Reconstruction of Equality Before the Law: Islamic Perspective", year: "2025", citations: 0, authors: "Ahmad Alimuddin" }
+      ],
+      get filteredPublications() {
+        return this.publications.filter(p => 
+          p.title.toLowerCase().includes(this.search.toLowerCase()) || 
+          p.year.includes(this.search)
+        );
+      }
+    }
+  }
+</script>
