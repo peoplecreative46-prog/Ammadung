@@ -12,18 +12,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Pengaturan khusus saat di-print / download PDF */
         @media print {
             body { background-color: #ffffff; color: #000000; }
             .no-print { display: none !important; }
             .print-break-inside-avoid { break-inside: avoid; }
-            #cv-container { box-shadow: none; max-width: 100%; padding: 0; }
+            #cv-container { box-shadow: none; max-width: 100%; padding: 0; border: none; }
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 antialiased selection:bg-blue-200">
+<body class="bg-gray-100 text-gray-800 antialiased">
 
-    <!-- Tombol Download PDF (Akan hilang saat di-print) -->
+    <!-- Tombol Download PDF -->
     <div class="fixed top-5 right-5 z-50 no-print">
         <button onclick="generatePDF()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
@@ -31,10 +30,10 @@
         </button>
     </div>
 
-    <!-- Area Konten Utama CV -->
+    <!-- Area CV -->
     <main id="cv-container" class="max-w-5xl mx-auto bg-white my-10 p-10 sm:p-14 shadow-2xl border-t-8 border-blue-700">
         
-        <!-- HEADER: Profil & Kontak -->
+        <!-- HEADER -->
         <header class="flex flex-col md:flex-row items-center md:items-start gap-8 border-b-2 border-gray-100 pb-8 mb-8">
             <img src="https://i.ibb.co.com/5W7mXbfc/20251227-190442-0000.png" alt="Ahmad" class="w-40 h-40 object-cover rounded-full shadow-md border-4 border-gray-50">
             <div class="text-center md:text-left flex-grow">
@@ -42,33 +41,18 @@
                 <h2 class="text-xl font-semibold text-blue-700 mb-4">Peneliti Hukum Keluarga Islam & Akademisi</h2>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600">
-                    <p class="flex items-center justify-center md:justify-start gap-2">
-                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-                        ahmad@iainpare.ac.id
-                    </p>
-                    <p class="flex items-center justify-center md:justify-start gap-2">
-                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.042 11.042 0 005.115 5.115l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-                        0895806634925
-                    </p>
-                    <p class="flex items-center justify-center md:justify-start gap-2">
-                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                        Polewali Mandar, Sulawesi Barat
-                    </p>
-                    <p class="flex items-center justify-center md:justify-start gap-2">
-                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                        NIM: 2420203874130022
-                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">✉️ ahmad@iainpare.ac.id</p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">📞 0895806634925</p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">📍 Polewali Mandar, Sulawesi Barat</p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">🎓 NIM: 2420203874130022</p>
                 </div>
             </div>
         </header>
 
-        <!-- GRID KIRI & KANAN -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             
-            <!-- KOLOM KIRI (Profil, Metrik, Pendidikan, Organisasi) -->
+            <!-- KOLOM KIRI -->
             <div class="lg:col-span-1 space-y-8">
-                
-                <!-- Profil Singkat -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Profil Singkat</h3>
                     <p class="text-gray-700 text-sm leading-relaxed text-justify">
@@ -76,7 +60,6 @@
                     </p>
                 </section>
 
-                <!-- Metrik & Jaringan Akademik -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Metrik Akademik</h3>
                     <ul class="text-sm text-gray-700 space-y-2 mb-4">
@@ -90,7 +73,6 @@
                     </p>
                 </section>
 
-                <!-- Pendidikan -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Pendidikan</h3>
                     <ul class="space-y-4">
@@ -118,7 +100,6 @@
                     </ul>
                 </section>
 
-                <!-- Organisasi -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Organisasi</h3>
                     <ul class="space-y-3">
@@ -134,104 +115,102 @@
                 </section>
             </div>
 
-            <!-- KOLOM KANAN (Riset Litapdimas & 43 Publikasi) -->
+            <!-- KOLOM KANAN -->
             <div class="lg:col-span-2 space-y-8">
                 
-                <!-- Riset LITAPDIMAS -->
+                <!-- RIWAYAT PENELITIAN & LITAPDIMAS (Diberi Highlight) -->
                 <section>
                     <h3 class="text-xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-4 uppercase tracking-wider flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        Riset & Hibah (LITAPDIMAS)
+                        🔬 Riset & Hibah (LITAPDIMAS)
                     </h3>
                     <div class="space-y-4">
-                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 print-break-inside-avoid">
+                        <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-600 shadow-sm print-break-inside-avoid">
                             <span class="inline-block px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded mb-2">LITAPDIMAS 2026</span>
                             <h4 class="text-sm font-bold text-gray-900">"Effectiveness of Family Law Conflict Resolution Through e-Syariah and Islamic Marriage Management System of Malaysia and Indonesia"</h4>
-                            <p class="text-sm text-gray-600 mt-1">Peran: Anggota Penelitian</p>
+                            <p class="text-sm font-semibold text-blue-700 mt-2">Peran: Anggota Penelitian</p>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 print-break-inside-avoid">
+                        <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-600 shadow-sm print-break-inside-avoid">
                             <span class="inline-block px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded mb-2">LITAPDIMAS 2026</span>
                             <h4 class="text-sm font-bold text-gray-900">"Model Pengembangan PTKI Berbasis Akulturasi Islam-Budaya Lokal: Studi Pemikiran AG. KH. Abdurrahman Ambo Dalle"</h4>
-                            <p class="text-sm text-gray-600 mt-1">Peran: Peneliti</p>
+                            <p class="text-sm font-semibold text-blue-700 mt-2">Peran: Peneliti</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Daftar Publikasi -->
+                <!-- PUBLIKASI -->
                 <section>
                     <h3 class="text-xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-4 uppercase tracking-wider flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                        Karya Publikasi & Artikel Ilmiah
+                        📚 Karya Publikasi Ilmiah
                     </h3>
                     
                     <!-- 2026 -->
-                    <div class="mb-6">
-                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2026</h4>
-                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700">
-                            <li class="print-break-inside-avoid"><strong>(Scopus Q1)</strong> "Family Ijtihad and Ritual Adaptation among Urban Muslim Toraja Families: A Fiqh al-Aqalliyyat Perspective" – <em>Jurnal Ilmiah Al-Syir'ah</em></li>
-                            <li class="print-break-inside-avoid"><strong>(Scopus Q1)</strong> "Decentralized Finance (DeFi) and Islamic Economic Law: A Maqāṣid al-Sharīʿah Analysis of Blockchain-Based Financial Ecosystems" – <em>Al-Ahkam</em></li>
-                            <li class="print-break-inside-avoid">"Safeguarding Pilgrims from Fraud and Organizer Failures..." – <em>Al-Qanun</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"Environmental Fiqh Analysis of Coal-Fired Power Plant (PLTU) Barru Operational Impacts..." – <em>YUDISIA</em></li>
-                            <li class="print-break-inside-avoid">"The Impact of Waithood and Sex Recession on Demographic Crisis..." – <em>Usroh</em></li>
-                            <li class="print-break-inside-avoid">"Analysis of ‘Urf on the Makkappa’ Tradition among the Pattae Community..." – <em>NUANSA</em></li>
-                            <li class="print-break-inside-avoid">"Climate Change Adaptation Strategies in Hajj Management..." – <em>Multazam</em></li>
-                            <li class="print-break-inside-avoid">"Implementasi Asta Protas di KUA: Analisis Hukum Keluarga Islam..." – <em>Jurnal Hukum Keluarga Islam El-Qisth</em></li>
-                            <li class="print-break-inside-avoid">"Maqāṣid al-Sharīʿah in the Age of Artificial Intelligence..." – <em>Tasdiruna</em></li>
-                            <li class="print-break-inside-avoid">"Analisis Jaringan Sosial Keagamaan Nahdlatul Ulama dalam Pengelolaan Konflik..." – <em>Asas Wa Tandhim</em></li>
-                            <li class="print-break-inside-avoid">"Adopsi Anak Oleh Komunitas LGBTQ+ Dalam Perspektif Hukum Keluarga Islam..." – <em>USRAH</em></li>
+                    <div class="mb-6 print-break-inside-avoid">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3 border-l-4 border-gray-400">Tahun 2026</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700 ml-2">
+                            <li><strong>(Scopus Q1)</strong> "Family Ijtihad and Ritual Adaptation among Urban Muslim Toraja Families: A Fiqh al-Aqalliyyat Perspective" – <em>Jurnal Ilmiah Al-Syir'ah</em></li>
+                            <li><strong>(Scopus Q1)</strong> "Decentralized Finance (DeFi) and Islamic Economic Law..." – <em>Al-Ahkam</em></li>
+                            <li>"Safeguarding Pilgrims from Fraud and Organizer Failures..." – <em>Al-Qanun</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"Environmental Fiqh Analysis of Coal-Fired Power Plant (PLTU) Barru..." – <em>YUDISIA</em></li>
+                            <li>"The Impact of Waithood and Sex Recession on Demographic Crisis..." – <em>Usroh</em></li>
+                            <li>"Analysis of ‘Urf on the Makkappa’ Tradition among the Pattae Community..." – <em>NUANSA</em></li>
+                            <li>"Climate Change Adaptation Strategies in Hajj Management..." – <em>Multazam</em></li>
+                            <li>"Implementasi Asta Protas di KUA: Analisis Hukum Keluarga Islam..." – <em>Jurnal Hukum Keluarga Islam El-Qisth</em></li>
+                            <li>"Maqāṣid al-Sharīʿah in the Age of Artificial Intelligence..." – <em>Tasdiruna</em></li>
+                            <li>"Analisis Jaringan Sosial Keagamaan Nahdlatul Ulama..." – <em>Asas Wa Tandhim</em></li>
+                            <li>"Adopsi Anak Oleh Komunitas LGBTQ+ Dalam Perspektif Hukum Keluarga Islam..." – <em>USRAH</em></li>
                         </ul>
                     </div>
 
                     <!-- 2025 -->
-                    <div class="mb-6">
-                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2025</h4>
-                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700">
-                            <li class="print-break-inside-avoid">"Analysis of the urgency of sharia fatwas on Zakat management for renewable energy..." – <em>Int. Journal of Sharia and Law</em> <span class="text-blue-600 font-semibold">(Dikutip: 4)</span></li>
-                            <li class="print-break-inside-avoid">"Analisis Fenomena Marriage is Scary Pada Kalangan Mahasiswa IAIN Parepare..." – <em>Al-Hukamaa</em> <span class="text-blue-600 font-semibold">(Dikutip: 3)</span></li>
-                            <li class="print-break-inside-avoid">"Tanggung Jawab Sosial Aqiqah dalam Perspektif Fikih Lingkungan" – <em>Jurnal Riset HKI</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"Islamic Law and Customary Law Conflict in Elopement..." – <em>Qanun</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"The Role of Mediation in Resolving Family Communication Conflicts..." – <em>Jurnal Marital</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"Transformasi Komunikasi Keluarga di Era Media Sosial..." – <em>Al-IHKAM</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"Analisis pengaruh inflasi dalam penentuan nominal uang panai..." – <em>Al Maqashidi</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"Peluang dan Tantangan Teknologi Blockchain untuk Pencatatan Pernikahan..." – <em>SAMAWA</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
-                            <li class="print-break-inside-avoid">"Polemik Usia Baligh Sebagai Kriteria Pemimpin Dalam Fikih Islam" – <em>Maqasid</em> <span class="text-blue-600 font-semibold">(Dikutip: 1)</span></li>
-                            <li class="print-break-inside-avoid">"ESG-Based Islamic Finance: Opportunities and Challenges..." – <em>Al-Infaq</em></li>
-                            <li class="print-break-inside-avoid">"Moral Negotiations and Islamic Family Law in the Digital Age..." – <em>Legitima</em></li>
-                            <li class="print-break-inside-avoid">"Reconstruction of Equality Before the Law: An Islamic Legal Perspective..." – <em>Ahlika</em></li>
-                            <li class="print-break-inside-avoid">"Wife's Maintenance Rights in Nomadic Households..." – <em>EL-AHLI</em></li>
-                            <li class="print-break-inside-avoid">"Transparansi Akad Wakalah Bil Ujrah dalam Layanan Digital Banking Syariah..." – <em>Jurnal Iqtisaduna</em></li>
-                            <li class="print-break-inside-avoid">"Postcolonial Feminism: Reinterpreting Religious Texts for Global Gender Justice" – <em>AL-MAIYYAH</em></li>
-                            <li class="print-break-inside-avoid">"Analisis Implikasi Kebijakan Penghapusan Dispensasi Perkawinan Anak..." – <em>AHKAM</em></li>
-                            <li class="print-break-inside-avoid">"Tinjauan Hukum Islam terhadap Implementasi Program Penurunan Stunting BKKBN..." – <em>Al-Hukamaa</em></li>
-                            <li class="print-break-inside-avoid">"Emotional-Religious Ponzi Scheme: Reconstructing Fraud Triangle Theory..." – <em>Haramain</em></li>
-                            <li class="print-break-inside-avoid">"Zakat Profesi Berbasis Keluarga Sebagai Instrumen Redistribusi..." – <em>Al-Hukmi</em></li>
-                            <li class="print-break-inside-avoid"><strong>Buku:</strong> "Hukum Keluarga Islam Kontemporer: Dinamika, Inovasi, dan Keadilan Gender"</li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Nuzulul Quran Dan Asbab Nuzul"</li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Sejarah dan Pemikiran Hukum Islam: Mazhab Hukum Keluarga Imam Syafi’i"</li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Struktur Dan Fungsi Keluarga Dalam Budaya Bugis Makassar Dan Mandar"</li>
+                    <div class="mb-6 print-break-inside-avoid">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3 border-l-4 border-gray-400">Tahun 2025</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700 ml-2">
+                            <li>"Analysis of the urgency of sharia fatwas on Zakat management..." – <em>Int. Journal of Sharia and Law</em> <span class="text-blue-600 font-semibold">(Dikutip: 4)</span></li>
+                            <li>"Analisis Fenomena Marriage is Scary Pada Kalangan Mahasiswa..." – <em>Al-Hukamaa</em> <span class="text-blue-600 font-semibold">(Dikutip: 3)</span></li>
+                            <li>"Tanggung Jawab Sosial Aqiqah dalam Perspektif Fikih Lingkungan" – <em>Jurnal Riset HKI</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"Islamic Law and Customary Law Conflict in Elopement..." – <em>Qanun</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"The Role of Mediation in Resolving Family Communication Conflicts..." – <em>Jurnal Marital</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"Transformasi Komunikasi Keluarga di Era Media Sosial..." – <em>Al-IHKAM</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"Analisis pengaruh inflasi dalam penentuan nominal uang panai..." – <em>Al Maqashidi</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"Peluang dan Tantangan Teknologi Blockchain untuk Pencatatan Pernikahan..." – <em>SAMAWA</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li>"Polemik Usia Baligh Sebagai Kriteria Pemimpin Dalam Fikih Islam" – <em>Maqasid</em> <span class="text-blue-600 font-semibold">(Dikutip: 1)</span></li>
+                            <li>"ESG-Based Islamic Finance: Opportunities and Challenges..." – <em>Al-Infaq</em></li>
+                            <li>"Moral Negotiations and Islamic Family Law in the Digital Age..." – <em>Legitima</em></li>
+                            <li>"Reconstruction of Equality Before the Law..." – <em>Ahlika</em></li>
+                            <li>"Wife's Maintenance Rights in Nomadic Households..." – <em>EL-AHLI</em></li>
+                            <li>"Transparansi Akad Wakalah Bil Ujrah dalam Layanan Digital Banking Syariah..." – <em>Jurnal Iqtisaduna</em></li>
+                            <li>"Postcolonial Feminism: Reinterpreting Religious Texts..." – <em>AL-MAIYYAH</em></li>
+                            <li>"Analisis Implikasi Kebijakan Penghapusan Dispensasi Perkawinan Anak..." – <em>AHKAM</em></li>
+                            <li>"Tinjauan Hukum Islam terhadap Implementasi Program Penurunan Stunting..." – <em>Al-Hukamaa</em></li>
+                            <li>"Emotional-Religious Ponzi Scheme: Reconstructing Fraud Triangle Theory..." – <em>Haramain</em></li>
+                            <li>"Zakat Profesi Berbasis Keluarga Sebagai Instrumen Redistribusi..." – <em>Al-Hukmi</em></li>
+                            <li><strong>Buku:</strong> "Hukum Keluarga Islam Kontemporer: Dinamika, Inovasi, dan Keadilan Gender"</li>
+                            <li><strong>Karya Ilmiah:</strong> "Nuzulul Quran Dan Asbab Nuzul"</li>
+                            <li><strong>Karya Ilmiah:</strong> "Sejarah dan Pemikiran Hukum Islam: Mazhab Hukum Keluarga Imam Syafi’i"</li>
+                            <li><strong>Karya Ilmiah:</strong> "Struktur Dan Fungsi Keluarga Dalam Budaya Bugis Makassar Dan Mandar"</li>
                         </ul>
                     </div>
 
                     <!-- 2024 -->
-                    <div class="mb-6">
-                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2024</h4>
-                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700" start="35">
-                            <li class="print-break-inside-avoid">"Problematika Penerapan Hukum Perkawinan Islam di Era Digital: Studi Kasus Pernikahan Online di Indonesia" – <em>Al Fuadiy</em> <span class="text-blue-600 font-semibold">(Dikutip: 9)</span></li>
-                            <li class="print-break-inside-avoid">"Tinjauan Maqāṣid Syari’ah terhadap Perjanjian Perkawinan sebagai Jaminan Keluarga Bahagia" – <em>Al-Hukamaa</em> <span class="text-blue-600 font-semibold">(Dikutip: 7)</span></li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Perbandingan Hukum Keluarga Islam Di Somalia Dan Indonesia"</li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Pembaruan Hukum Keluarga Di Negara Muslim Modern"</li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Tantangan Hukum Dan Solusi Sosial Terhadap Gelandangan Dan PSK Di Kota Parepare"</li>
-                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Implementasi Hukum Sebagai Instrumen Untuk Mencapai Keadilan Sosial Di Indonesia"</li>
+                    <div class="mb-6 print-break-inside-avoid">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3 border-l-4 border-gray-400">Tahun 2024</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700 ml-2" start="35">
+                            <li>"Problematika Penerapan Hukum Perkawinan Islam di Era Digital..." – <em>Al Fuadiy</em> <span class="text-blue-600 font-semibold">(Dikutip: 9)</span></li>
+                            <li>"Tinjauan Maqāṣid Syari’ah terhadap Perjanjian Perkawinan..." – <em>Al-Hukamaa</em> <span class="text-blue-600 font-semibold">(Dikutip: 7)</span></li>
+                            <li><strong>Karya Ilmiah:</strong> "Perbandingan Hukum Keluarga Islam Di Somalia Dan Indonesia"</li>
+                            <li><strong>Karya Ilmiah:</strong> "Pembaruan Hukum Keluarga Di Negara Muslim Modern"</li>
+                            <li><strong>Karya Ilmiah:</strong> "Tantangan Hukum Dan Solusi Sosial Terhadap Gelandangan Dan PSK Di Kota Parepare"</li>
+                            <li><strong>Karya Ilmiah:</strong> "Implementasi Hukum Sebagai Instrumen Untuk Mencapai Keadilan Sosial Di Indonesia"</li>
                         </ul>
                     </div>
 
                     <!-- 2023 -->
-                    <div>
-                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2023</h4>
-                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700" start="41">
-                            <li class="print-break-inside-avoid">"Historical Analysis and Calibration of the Oldest Al-Mujahidin Mosque, Parepare City" – <em>Al-Marshad</em> <span class="text-blue-600 font-semibold">(Dikutip: 1)</span></li>
-                            <li class="print-break-inside-avoid">"Posko Community Service Lecture 80 in Management Establishment and Development Qur’an Education Kindergarden" – <em>Makkareso</em></li>
-                            <li class="print-break-inside-avoid"><strong>Skripsi:</strong> "Studi Penentuan Arah Kiblat Masjid Al Mujahidin Kota Parepare" – <em>IAIN Parepare</em></li>
+                    <div class="print-break-inside-avoid">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3 border-l-4 border-gray-400">Tahun 2023</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700 ml-2" start="41">
+                            <li>"Historical Analysis and Calibration of the Oldest Al-Mujahidin Mosque..." – <em>Al-Marshad</em> <span class="text-blue-600 font-semibold">(Dikutip: 1)</span></li>
+                            <li>"Posko Community Service Lecture 80 in Management Establishment..." – <em>Makkareso</em></li>
+                            <li><strong>Skripsi:</strong> "Studi Penentuan Arah Kiblat Masjid Al Mujahidin Kota Parepare"</li>
                         </ul>
                     </div>
 
@@ -240,14 +219,14 @@
         </div>
     </main>
 
-    <!-- Script Pembuatan PDF -->
+    <!-- Script PDF -->
     <script>
         function generatePDF() {
             const element = document.getElementById('cv-container');
             const opt = {
                 margin:       0.3,
                 filename:     'Portofolio_CV_Ahmad.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
+                image:        { type: 'jpeg', quality: 1 },
                 html2canvas:  { scale: 2, useCORS: true },
                 jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
