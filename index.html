@@ -3,252 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Akademik - Ahmad, S.H.</title>
+    <title>CV & Portofolio Akademik - Ahmad, S.H.</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- html2pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
+        body { font-family: 'Inter', sans-serif; }
+        /* Pengaturan khusus saat di-print / download PDF */
+        @media print {
+            body { background-color: #ffffff; color: #000000; }
+            .no-print { display: none !important; }
+            .print-break-inside-avoid { break-inside: avoid; }
+            #cv-container { box-shadow: none; max-width: 100%; padding: 0; }
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+<body class="bg-gray-100 text-gray-800 antialiased selection:bg-blue-200">
 
-    <!-- Navbar / Header Menu -->
-    <nav class="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Ahmad.Porto</span>
-            <div class="flex gap-4">
-                <button onclick="generatePDF()" class="bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm py-2 px-4 rounded-lg transition shadow-lg shadow-blue-600/20 flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                    Simpan PDF
-                </button>
-            </div>
-        </div>
-    </nav>
+    <!-- Tombol Download PDF (Akan hilang saat di-print) -->
+    <div class="fixed top-5 right-5 z-50 no-print">
+        <button onclick="generatePDF()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            Simpan PDF
+        </button>
+    </div>
 
-    <!-- Main Container for Display & PDF Generation -->
-    <main id="portfolio-cv" class="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 flex-grow">
+    <!-- Area Konten Utama CV -->
+    <main id="cv-container" class="max-w-5xl mx-auto bg-white my-10 p-10 sm:p-14 shadow-2xl border-t-8 border-blue-700">
         
-        <!-- Profile Section -->
-        <div class="bg-slate-800/50 border border-slate-700/60 rounded-2xl p-6 sm:p-8 backdrop-blur-sm shadow-xl flex flex-col md:flex-row items-center gap-8 mb-8">
-            <div class="relative group">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
-                <img src="https://i.ibb.co.com/5W7mXbfc/20251227-190442-0000.png" alt="Ahmad" class="relative w-36 h-36 sm:w-40 sm:h-40 object-cover rounded-full border-4 border-slate-800">
-            </div>
+        <!-- HEADER: Profil & Kontak -->
+        <header class="flex flex-col md:flex-row items-center md:items-start gap-8 border-b-2 border-gray-100 pb-8 mb-8">
+            <img src="https://i.ibb.co.com/5W7mXbfc/20251227-190442-0000.png" alt="Ahmad" class="w-40 h-40 object-cover rounded-full shadow-md border-4 border-gray-50">
             <div class="text-center md:text-left flex-grow">
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Ahmad, S.H.</h1>
-                <p class="text-blue-400 font-semibold text-lg mt-1">Peneliti Hukum Keluarga Islam & Akademisi</p>
+                <h1 class="text-4xl font-extrabold text-gray-900 mb-1 tracking-tight">AHMAD, S.H.</h1>
+                <h2 class="text-xl font-semibold text-blue-700 mb-4">Peneliti Hukum Keluarga Islam & Akademisi</h2>
                 
-                <!-- Meta Info Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 text-sm text-slate-300 border-t border-slate-700/50 pt-4">
-                    <div class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="text-slate-400">✉️</span>
-                        <a href="mailto:ahmad@iainpare.ac.id" class="hover:text-blue-400 transition">ahmad@iainpare.ac.id</a>
-                    </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="text-slate-400">📞</span>
-                        <a href="https://wa.me/62895806634925" target="_blank" class="hover:text-blue-400 transition">0895806634925</a>
-                    </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="text-slate-400">📍</span>
-                        <span>Polewali Mandar, Sulawesi Barat</span>
-                    </div>
-                    <div class="flex items-center justify-center md:justify-start gap-2">
-                        <span class="text-slate-400">🎓</span>
-                        <span>NIM: 2420203874130022</span>
-                    </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600">
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        ahmad@iainpare.ac.id
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.042 11.042 0 005.115 5.115l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                        0895806634925
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                        Polewali Mandar, Sulawesi Barat
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                        NIM: 2420203874130022
+                    </p>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Ringkasan Profil -->
-        <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 mb-8">
-            <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                <span class="h-5 w-1 bg-blue-500 rounded-full inline-block"></span> Ringkasan Profesional
-            </h2>
-            <p class="text-slate-300 leading-relaxed text-justify text-sm sm:text-base">
-                Lulusan Sarjana Hukum Keluarga Islam dari IAIN Parepare dengan dedikasi tinggi pada penelitian akademik dan pengembangan keilmuan. Memiliki rekam jejak publikasi ilmiah yang luar biasa dengan lebih dari 40 karya yang diterbitkan, termasuk di jurnal bereputasi Scopus Q1 dan berbagai tingkatan Sinta. Berpengalaman aktif dalam pengelolaan organisasi keagamaan dan akademik, serta memiliki komitmen mendalam untuk berkontribusi pada riset hukum Islam kontemporer, keadilan gender, dan dinamika sosial.
-            </p>
-        </div>
+        <!-- GRID KIRI & KANAN -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <!-- KOLOM KIRI (Profil, Metrik, Pendidikan, Organisasi) -->
+            <div class="lg:col-span-1 space-y-8">
+                
+                <!-- Profil Singkat -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Profil Singkat</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed text-justify">
+                        Lulusan Sarjana Hukum Keluarga Islam dari IAIN Parepare dengan dedikasi tinggi pada penelitian akademik dan pengembangan keilmuan. Memiliki rekam jejak publikasi ilmiah yang sangat kuat dengan lebih dari 40 karya yang diterbitkan, termasuk di jurnal bereputasi internasional (Scopus Q1) dan nasional (Sinta). Aktif dalam riset hibah (LITAPDIMAS) dan berpengalaman dalam pengelolaan organisasi akademik.
+                    </p>
+                </section>
 
-        <!-- Grid Pendidikan & Organisasi -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <!-- Pendidikan -->
-            <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6">
-                <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                    <span class="h-5 w-1 bg-indigo-500 rounded-full inline-block"></span> Riwayat Pendidikan
-                </h2>
-                <div class="relative border-l border-slate-700 ml-2 space-y-6">
-                    <div class="relative pl-6">
-                        <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-blue-500 rounded-full border-2 border-slate-900"></div>
-                        <span class="text-xs font-semibold text-blue-400">2023</span>
-                        <h4 class="text-base font-bold text-white">Sarjana (S1) Hukum Keluarga Islam</h4>
-                        <p class="text-sm text-slate-400">IAIN Parepare</p>
-                    </div>
-                    <div class="relative pl-6">
-                        <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-slate-600 rounded-full border-2 border-slate-900"></div>
-                        <span class="text-xs font-semibold text-slate-400">2019</span>
-                        <h4 class="text-base font-bold text-white">MA DDI Al-Ihsan Kanang</h4>
-                    </div>
-                    <div class="relative pl-6">
-                        <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-slate-600 rounded-full border-2 border-slate-900"></div>
-                        <span class="text-xs font-semibold text-slate-400">2016</span>
-                        <h4 class="text-base font-bold text-white">MTs DDI Al-Ihsan Kanang</h4>
-                    </div>
-                    <div class="relative pl-6">
-                        <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-slate-600 rounded-full border-2 border-slate-900"></div>
-                        <span class="text-xs font-semibold text-slate-400">2013</span>
-                        <h4 class="text-base font-bold text-white">SDN 048 Mambulilling</h4>
-                    </div>
-                </div>
+                <!-- Metrik & Jaringan Akademik -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Metrik Akademik</h3>
+                    <ul class="text-sm text-gray-700 space-y-2 mb-4">
+                        <li class="flex justify-between border-b border-gray-100 pb-1"><span>Kutipan (Citations)</span> <span class="font-bold text-blue-700">39</span></li>
+                        <li class="flex justify-between border-b border-gray-100 pb-1"><span>Indeks-h (h-index)</span> <span class="font-bold text-blue-700">3</span></li>
+                        <li class="flex justify-between pb-1"><span>Indeks-i10</span> <span class="font-bold text-blue-700">0</span></li>
+                    </ul>
+                    <h4 class="text-sm font-semibold text-gray-800 mb-2">Rekan Penulis (Co-Authors):</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        Naharuddin SR, Rusdaya Basri, Dr. Agus Muchsin M.Ag, Minhajuddin Madi, Faisal Nur Shadiq Shabri Lc, Islamul Haq, Abdillah, Raodhatul Jannah, Novia Anugra, Rezki Amaliah Syafruddin, Abd. Karim Faiz, Muhammad Ali Rusdi Bedong, Syafa’at Anugrah Pradana, Muhammad Said, Ahmad Yani Al Makazzary.
+                    </p>
+                </section>
+
+                <!-- Pendidikan -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Pendidikan</h3>
+                    <ul class="space-y-4">
+                        <li class="relative pl-4 border-l-2 border-blue-200">
+                            <span class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-blue-600"></span>
+                            <div class="text-xs font-bold text-blue-600">Lulus 2023</div>
+                            <div class="text-sm font-bold text-gray-800">S1 Hukum Keluarga Islam</div>
+                            <div class="text-sm text-gray-600">IAIN Parepare</div>
+                        </li>
+                        <li class="relative pl-4 border-l-2 border-blue-200">
+                            <span class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gray-400"></span>
+                            <div class="text-xs font-bold text-gray-500">2019</div>
+                            <div class="text-sm font-semibold text-gray-800">MA DDI Al-Ihsan Kanang</div>
+                        </li>
+                        <li class="relative pl-4 border-l-2 border-blue-200">
+                            <span class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gray-400"></span>
+                            <div class="text-xs font-bold text-gray-500">2016</div>
+                            <div class="text-sm font-semibold text-gray-800">MTs DDI Al-Ihsan Kanang</div>
+                        </li>
+                        <li class="relative pl-4 border-l-2 border-transparent">
+                            <span class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-gray-400"></span>
+                            <div class="text-xs font-bold text-gray-500">2013</div>
+                            <div class="text-sm font-semibold text-gray-800">SDN 048 Mambulilling</div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Organisasi -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-3 uppercase tracking-wider">Organisasi</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <div class="text-sm font-bold text-gray-800">Sekretaris Yayasan</div>
+                            <div class="text-xs text-gray-600">El Haq Global Academic (2026–2031)</div>
+                        </li>
+                        <li>
+                            <div class="text-sm font-bold text-gray-800">Peserta MAPABA PMII</div>
+                            <div class="text-xs text-gray-600">IAIN Parepare (2019)</div>
+                        </li>
+                    </ul>
+                </section>
             </div>
 
-            <!-- Organisasi -->
-            <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <span class="h-5 w-1 bg-purple-500 rounded-full inline-block"></span> Pengalaman Organisasi
-                    </h2>
+            <!-- KOLOM KANAN (Riset Litapdimas & 43 Publikasi) -->
+            <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Riset LITAPDIMAS -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-4 uppercase tracking-wider flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        Riset & Hibah (LITAPDIMAS)
+                    </h3>
                     <div class="space-y-4">
-                        <div class="p-4 bg-slate-800/60 rounded-xl border border-slate-700/40">
-                            <span class="text-xs font-semibold text-purple-400 block mb-1">2026 – 2031</span>
-                            <h4 class="text-base font-bold text-white">Sekretaris Yayasan</h4>
-                            <p class="text-sm text-slate-400">El Haq Global Academic</p>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 print-break-inside-avoid">
+                            <span class="inline-block px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded mb-2">LITAPDIMAS 2026</span>
+                            <h4 class="text-sm font-bold text-gray-900">"Effectiveness of Family Law Conflict Resolution Through e-Syariah and Islamic Marriage Management System of Malaysia and Indonesia"</h4>
+                            <p class="text-sm text-gray-600 mt-1">Peran: Anggota Penelitian</p>
                         </div>
-                        <div class="p-4 bg-slate-800/60 rounded-xl border border-slate-700/40">
-                            <span class="text-xs font-semibold text-purple-400 block mb-1">2019</span>
-                            <h4 class="text-base font-bold text-white">MAPABA PMII</h4>
-                            <p class="text-sm text-slate-400">IAIN Parepare</p>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 print-break-inside-avoid">
+                            <span class="inline-block px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded mb-2">LITAPDIMAS 2026</span>
+                            <h4 class="text-sm font-bold text-gray-900">"Model Pengembangan PTKI Berbasis Akulturasi Islam-Budaya Lokal: Studi Pemikiran AG. KH. Abdurrahman Ambo Dalle"</h4>
+                            <p class="text-sm text-gray-600 mt-1">Peran: Peneliti</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </section>
 
-        <!-- Interactive Publications Section -->
-        <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6">
-            <h2 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <span class="h-5 w-1 bg-emerald-500 rounded-full inline-block"></span> Karya & Publikasi Ilmiah
-            </h2>
-            <p class="text-xs text-slate-400 mb-6">Klik kategori di bawah ini untuk melihat daftar publikasi penelitian.</p>
+                <!-- Daftar Publikasi -->
+                <section>
+                    <h3 class="text-xl font-bold text-gray-900 border-b-2 border-blue-600 pb-2 mb-4 uppercase tracking-wider flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Karya Publikasi & Artikel Ilmiah
+                    </h3>
+                    
+                    <!-- 2026 -->
+                    <div class="mb-6">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2026</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700">
+                            <li class="print-break-inside-avoid"><strong>(Scopus Q1)</strong> "Family Ijtihad and Ritual Adaptation among Urban Muslim Toraja Families: A Fiqh al-Aqalliyyat Perspective" – <em>Jurnal Ilmiah Al-Syir'ah</em></li>
+                            <li class="print-break-inside-avoid"><strong>(Scopus Q1)</strong> "Decentralized Finance (DeFi) and Islamic Economic Law: A Maqāṣid al-Sharīʿah Analysis of Blockchain-Based Financial Ecosystems" – <em>Al-Ahkam</em></li>
+                            <li class="print-break-inside-avoid">"Safeguarding Pilgrims from Fraud and Organizer Failures..." – <em>Al-Qanun</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"Environmental Fiqh Analysis of Coal-Fired Power Plant (PLTU) Barru Operational Impacts..." – <em>YUDISIA</em></li>
+                            <li class="print-break-inside-avoid">"The Impact of Waithood and Sex Recession on Demographic Crisis..." – <em>Usroh</em></li>
+                            <li class="print-break-inside-avoid">"Analysis of ‘Urf on the Makkappa’ Tradition among the Pattae Community..." – <em>NUANSA</em></li>
+                            <li class="print-break-inside-avoid">"Climate Change Adaptation Strategies in Hajj Management..." – <em>Multazam</em></li>
+                            <li class="print-break-inside-avoid">"Implementasi Asta Protas di KUA: Analisis Hukum Keluarga Islam..." – <em>Jurnal Hukum Keluarga Islam El-Qisth</em></li>
+                            <li class="print-break-inside-avoid">"Maqāṣid al-Sharīʿah in the Age of Artificial Intelligence..." – <em>Tasdiruna</em></li>
+                            <li class="print-break-inside-avoid">"Analisis Jaringan Sosial Keagamaan Nahdlatul Ulama dalam Pengelolaan Konflik..." – <em>Asas Wa Tandhim</em></li>
+                            <li class="print-break-inside-avoid">"Adopsi Anak Oleh Komunitas LGBTQ+ Dalam Perspektif Hukum Keluarga Islam..." – <em>USRAH</em></li>
+                        </ul>
+                    </div>
 
-            <!-- Tabs Navigation -->
-            <div class="flex flex-wrap gap-2 mb-6 border-b border-slate-700 pb-4">
-                <button onclick="switchTab('scopus')" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-blue-600 text-white transition">Scopus Q1</button>
-                <button onclick="switchTab('sinta23')" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 transition">Sinta 2 & 3</button>
-                <button onclick="switchTab('sinta45')" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 transition">Sinta 4 & 5</button>
-                <button onclick="switchTab('buku-lainnya')" class="tab-btn px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-slate-800 text-slate-400 hover:bg-slate-700 transition">Buku & Lainnya</button>
-            </div>
+                    <!-- 2025 -->
+                    <div class="mb-6">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2025</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700">
+                            <li class="print-break-inside-avoid">"Analysis of the urgency of sharia fatwas on Zakat management for renewable energy..." – <em>Int. Journal of Sharia and Law</em> <span class="text-blue-600 font-semibold">(Dikutip: 4)</span></li>
+                            <li class="print-break-inside-avoid">"Analisis Fenomena Marriage is Scary Pada Kalangan Mahasiswa IAIN Parepare..." – <em>Al-Hukamaa</em> <span class="text-blue-600 font-semibold">(Dikutip: 3)</span></li>
+                            <li class="print-break-inside-avoid">"Tanggung Jawab Sosial Aqiqah dalam Perspektif Fikih Lingkungan" – <em>Jurnal Riset HKI</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"Islamic Law and Customary Law Conflict in Elopement..." – <em>Qanun</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"The Role of Mediation in Resolving Family Communication Conflicts..." – <em>Jurnal Marital</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"Transformasi Komunikasi Keluarga di Era Media Sosial..." – <em>Al-IHKAM</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"Analisis pengaruh inflasi dalam penentuan nominal uang panai..." – <em>Al Maqashidi</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"Peluang dan Tantangan Teknologi Blockchain untuk Pencatatan Pernikahan..." – <em>SAMAWA</em> <span class="text-blue-600 font-semibold">(Dikutip: 2)</span></li>
+                            <li class="print-break-inside-avoid">"Polemik Usia Baligh Sebagai Kriteria Pemimpin Dalam Fikih Islam" – <em>Maqasid</em> <span class="text-blue-600 font-semibold">(Dikutip: 1)</span></li>
+                            <li class="print-break-inside-avoid">"ESG-Based Islamic Finance: Opportunities and Challenges..." – <em>Al-Infaq</em></li>
+                            <li class="print-break-inside-avoid">"Moral Negotiations and Islamic Family Law in the Digital Age..." – <em>Legitima</em></li>
+                            <li class="print-break-inside-avoid">"Reconstruction of Equality Before the Law: An Islamic Legal Perspective..." – <em>Ahlika</em></li>
+                            <li class="print-break-inside-avoid">"Wife's Maintenance Rights in Nomadic Households..." – <em>EL-AHLI</em></li>
+                            <li class="print-break-inside-avoid">"Transparansi Akad Wakalah Bil Ujrah dalam Layanan Digital Banking Syariah..." – <em>Jurnal Iqtisaduna</em></li>
+                            <li class="print-break-inside-avoid">"Postcolonial Feminism: Reinterpreting Religious Texts for Global Gender Justice" – <em>AL-MAIYYAH</em></li>
+                            <li class="print-break-inside-avoid">"Analisis Implikasi Kebijakan Penghapusan Dispensasi Perkawinan Anak..." – <em>AHKAM</em></li>
+                            <li class="print-break-inside-avoid">"Tinjauan Hukum Islam terhadap Implementasi Program Penurunan Stunting BKKBN..." – <em>Al-Hukamaa</em></li>
+                            <li class="print-break-inside-avoid">"Emotional-Religious Ponzi Scheme: Reconstructing Fraud Triangle Theory..." – <em>Haramain</em></li>
+                            <li class="print-break-inside-avoid">"Zakat Profesi Berbasis Keluarga Sebagai Instrumen Redistribusi..." – <em>Al-Hukmi</em></li>
+                            <li class="print-break-inside-avoid"><strong>Buku:</strong> "Hukum Keluarga Islam Kontemporer: Dinamika, Inovasi, dan Keadilan Gender"</li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Nuzulul Quran Dan Asbab Nuzul"</li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Sejarah dan Pemikiran Hukum Islam: Mazhab Hukum Keluarga Imam Syafi’i"</li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Struktur Dan Fungsi Keluarga Dalam Budaya Bugis Makassar Dan Mandar"</li>
+                        </ul>
+                    </div>
 
-            <!-- Tab Contents -->
-            <!-- Scopus -->
-            <div id="scopus" class="tab-content active space-y-3">
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Scopus Q1 — 2026</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Family Ijtihad and Ritual Adaptation among Urban Muslim Toraja Families: A Fiqh al-Aqalliyyat Perspective"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Jurnal Ilmiah Al-Syir'ah</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Scopus Q1 — 2026</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Decentralized Finance and Sharia Economic Law: A Maqāṣid-Based Analysis of Blockchain-Based Financial Ecosystems"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Al-Ahkam: Jurnal Ilmu Syari’ah dan Hukum</p>
-                </div>
-            </div>
+                    <!-- 2024 -->
+                    <div class="mb-6">
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2024</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700" start="35">
+                            <li class="print-break-inside-avoid">"Problematika Penerapan Hukum Perkawinan Islam di Era Digital: Studi Kasus Pernikahan Online di Indonesia" – <em>Al Fuadiy</em> <span class="text-blue-600 font-semibold">(Dikutip: 9)</span></li>
+                            <li class="print-break-inside-avoid">"Tinjauan Maqāṣid Syari’ah terhadap Perjanjian Perkawinan sebagai Jaminan Keluarga Bahagia" – <em>Al-Hukamaa</em> <span class="text-blue-600 font-semibold">(Dikutip: 7)</span></li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Perbandingan Hukum Keluarga Islam Di Somalia Dan Indonesia"</li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Pembaruan Hukum Keluarga Di Negara Muslim Modern"</li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Tantangan Hukum Dan Solusi Sosial Terhadap Gelandangan Dan PSK Di Kota Parepare"</li>
+                            <li class="print-break-inside-avoid"><strong>Karya Ilmiah:</strong> "Implementasi Hukum Sebagai Instrumen Untuk Mencapai Keadilan Sosial Di Indonesia"</li>
+                        </ul>
+                    </div>
 
-            <!-- Sinta 2 & 3 -->
-            <div id="sinta23" class="tab-content space-y-3">
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Sinta 2 — 2026</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Environmental Fiqh Analysis of Coal-Fired Power Plant (PLTU) Barru Operational Impacts on Ecosystem Sustainability"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">YUDISIA: Jurnal Pemikiran Hukum dan Hukum Islam</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Sinta 2 — 2025</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Moral Negotiations and Islamic Family Law in the Digital Age: A Study of the Sugar Daddy Phenomenon Among Muslim Youth"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Legitima: Jurnal Hukum Keluarga Islam</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Sinta 3 — 2025</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Islamic Law and Customary Law Conflict in Elopement: A Sociological Study of the Bugis-Makassar Community"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Qanun: Jurnal Hukum Keluarga Islam</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Sinta 3 — 2023</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Historical Analysis and Calibration of the Oldest Al-Mujahidin Mosque, Parepare City"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Al-Marshad: Jurnal Astronomi Islam dan Ilmu-Ilmu Berkaitan</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Sinta 3 — 2025</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"ESG-Based Islamic Finance: Opportunities and Challenges in Building the Sustainability of Islamic Economics Amid Issues of Usury and Corruption"</h4>
-                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Al-Infaq: Jurnal Ekonomi Islam</p>
-                </div>
-            </div>
+                    <!-- 2023 -->
+                    <div>
+                        <h4 class="text-md font-bold text-gray-800 bg-gray-100 py-1 px-3 rounded mb-3">Tahun 2023</h4>
+                        <ul class="list-decimal list-inside space-y-3 text-sm text-gray-700" start="41">
+                            <li class="print-break-inside-avoid">"Historical Analysis and Calibration of the Oldest Al-Mujahidin Mosque, Parepare City" – <em>Al-Marshad</em> <span class="text-blue-600 font-semibold">(Dikutip: 1)</span></li>
+                            <li class="print-break-inside-avoid">"Posko Community Service Lecture 80 in Management Establishment and Development Qur’an Education Kindergarden" – <em>Makkareso</em></li>
+                            <li class="print-break-inside-avoid"><strong>Skripsi:</strong> "Studi Penentuan Arah Kiblat Masjid Al Mujahidin Kota Parepare" – <em>IAIN Parepare</em></li>
+                        </ul>
+                    </div>
 
-            <!-- Sinta 4 & 5 -->
-            <div id="sinta45" class="tab-content space-y-3">
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Sinta 4</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Problematika Penerapan Hukum Perkawinan Islam di Era Digital: Studi Kasus Pernikahan Online di Indonesia" (2024)</h4>
-                    <p class="text-xs text-slate-400">Al-Fuadiy: Jurnal Hukum Keluarga Islam</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Sinta 4</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Transformasi Komunikasi Keluarga di Era Media Sosial Antara Kehangatan Tatap Muka dan Tantangan Privasi Digital" (2025)</h4>
-                    <p class="text-xs text-slate-400">Al-IHKAM Jurnal Hukum Keluarga</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Sinta 5</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Peluang dan Tantangan Teknologi Blockchain untuk Pencatatan Pernikahan di Indonesia" (2025)</h4>
-                    <p class="text-xs text-slate-400">SAMAWA: Jurnal Hukum Keluarga Islam</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Sinta 5</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"The Role of Mediation in Resolving Family Communication Conflicts" (2025)</h4>
-                    <p class="text-xs text-slate-400">Jurnal Marital: Kajian Hukum Keluarga Islam</p>
-                </div>
-            </div>
-
-            <!-- Buku & Lainnya -->
-            <div id="buku-lainnya" class="tab-content space-y-3">
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Buku Nasional — 2025</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Hukum Keluarga Islam Kontemporer: Dinamika, Inovasi, dan Keadilan Gender"</h4>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Skripsi — 2023</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Studi Penentuan Arah Kiblat Masjid Al Mujahidin Kota Parepare"</h4>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Artikel Ilmiah Internasional — 2025</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Analysis of the urgency of sharia fatwas on Zakat management for renewable energy an Islamic political perspective in the context of the climate crisis"</h4>
-                    <p class="text-xs text-slate-400">International Journal of Sharia and Law</p>
-                </div>
-                <div class="p-3.5 bg-slate-800/60 border border-slate-700/40 rounded-xl">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Artikel Ilmiah — 2026</span>
-                    <h4 class="text-sm sm:text-base font-semibold text-white mt-1">"Maqāṣid al-Sharīʿah in the Age of Artificial Intelligence: Constructing an Islamic Ethical Framework for AI Governance and Regulation"</h4>
-                    <p class="text-xs text-slate-400">Tasdiruna</p>
-                </div>
+                </section>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs sm:text-sm text-slate-500">
-        <p>&copy; 2026 Ahmad, S.H. All Rights Reserved. Hosted with GitHub Pages.</p>
-    </footer>
-
-    <!-- External Script Call -->
-    <script src="script.js"></script>
+    <!-- Script Pembuatan PDF -->
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('cv-container');
+            const opt = {
+                margin:       0.3,
+                filename:     'Portofolio_CV_Ahmad.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 </html>
