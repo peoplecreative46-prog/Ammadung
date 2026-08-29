@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Sertifikat 3D - Ahmad, S.H., M.H.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0f0f11;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-color: #315bff;
+      --text-main: #f5f5f7;
+      --text-muted: #86868b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: "DM Sans", sans-serif;
+      padding: 60px 20px;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(49, 91, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(49, 91, 255, 0.05) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    header {
+      margin-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .title-area h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 30%, var(--text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-area p {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 12px 24px;
+      border-radius: 100px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(8px);
+    }
+
+    .back-link:hover {
+      background: var(--text-main);
+      color: var(--bg-color);
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px 30px;
+      padding: 20px 0;
+    }
+
+    /* 3D Tilt Card Wrapper */
+    .card-wrapper {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: translateZ(0px);
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .cert-card:hover {
+      border-color: rgba(49, 91, 255, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 40px rgba(49, 91, 255, 0.1);
+    }
+
+    .img-container {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      transform: translateZ(20px); /* Push image out in 3D space */
+      margin: 12px;
+      width: calc(100% - 24px);
+      border-radius: 10px;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* Glossy shine reflection overlay */
+    .shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 60%);
+      pointer-events: none;
+      z-index: 5;
+      transform: translateZ(1px);
+    }
+
+    .cert-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      transform: translateZ(30px); /* Push text further out for parallax effect */
+    }
+
+    .cert-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 8px;
+    }
+
+    .cert-info h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+
+    .cert-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Lightbox Styling */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 12, 0.95);
+      z-index: 10000;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      backdrop-filter: blur(15px);
+    }
+
+    .lightbox.active {
+      display: grid;
+    }
+
+    .lightbox-content {
+      max-width: min(92vw, 960px);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-caption {
+      color: var(--text-main);
+      margin-top: 20px;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: var(--text-main);
+      color: var(--bg-color);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 30px 15px;
+      }
+      header {
+        margin-bottom: 40px;
+        padding-bottom: 25px;
+      }
+      .gallery-grid {
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-area">
+        <h1>Showcase Sertifikat 3D</h1>
+        <p>Pratinjau visual dan verifikasi sertifikasi kompetensi keagamaan, kepemimpinan, bahasa, dan prestasi ilmiah.</p>
+      </div>
+      <a href="../#certificates" class="back-link">← KEMBALI</a>
+    </header>
+
+    <main class="gallery-grid">
+      <!-- Card 1 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('sertifikat_membaca_al_quran_01_jun_2016.png', 'Sertifikat Membaca Al-Qur\'an (Bupati Polewali Mandar)')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="sertifikat_membaca_al_quran_01_jun_2016.png" alt="Sertifikat Membaca Al-Qur'an">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Keagamaan</span>
+            <h3>Sertifikat Membaca Al-Qur'an (Bupati Polewali Mandar)</h3>
+            <span class="cert-date">01 Juni 2016</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819841.png', 'KSM Lomba Kimia Terintegrasi - Tingkat Kabupaten Polewali Mandar')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819841.png" alt="KSM Kimia Polman">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Kompetisi</span>
+            <h3>KSM Kimia Terintegrasi - Tingkat Kabupaten</h3>
+            <span class="cert-date">12 Mei 2018</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819862.png', 'Juara 1 Lomba Kimia Terintegrasi - Tingkat Madrasah')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819862.png" alt="Juara 1 Kimia">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Prestasi</span>
+            <h3>Juara 1 Kimia Terintegrasi - Tingkat Madrasah</h3>
+            <span class="cert-date">27 April 2018</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819867.png', 'Latihan Dasar Kepemimpinan Siswa (LDKS OSIS) - MA DDI Kanang')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819867.png" alt="LDKS OSIS">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Kepemimpinan</span>
+            <h3>Latihan Dasar Kepemimpinan Siswa (LDKS OSIS)</h3>
+            <span class="cert-date">29 April 2018</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819878.png', 'Pengenalan Budaya Akademik dan Kemahasiswaan (PBAK) - IAIN Parepare')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819878.png" alt="PBAK IAIN Parepare">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Kemahasiswaan</span>
+            <h3>PBAK IAIN Parepare (Lulus)</h3>
+            <span class="cert-date">30 Agustus 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819889.png', 'Khatam Sharaf dan Ujian Sharaf - Pondok Pesantren DDI Al-Ihsan Kanang')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819889.png" alt="Ujian Sharaf">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Keagamaan</span>
+            <h3>Khatam &amp; Ujian Sharaf Ponpes DDI Kanang</h3>
+            <span class="cert-date">18 Maret 2017</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819900.png', 'English Language Program - Pondok Pesantren DDI Al-Ihsan Kanang')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819900.png" alt="English Program">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Bahasa</span>
+            <h3>Program Bahasa Inggris Ponpes DDI Kanang</h3>
+            <span class="cert-date">30 April 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819913.png', 'Pesantren Kilat Bulan Ramadhan 1433 H')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819913.png" alt="Pesantren Kilat">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Keagamaan</span>
+            <h3>Pesantren Kilat Bulan Ramadhan 1433 H</h3>
+            <span class="cert-date">18 Agustus 2012</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819928.png', 'Stadium General - Kontribusi Paradigma Maqasid al Syariah dalam Mengukuhkan Ijtihad Kontemporer')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819928.png" alt="Stadium General">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Akademik</span>
+            <h3>Stadium General "Maqasid al Syariah" IAIN Parepare</h3>
+            <span class="cert-date">12 Januari 2022</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819937.png', 'Gelar Sarjana Hukum (S.H.) Wisuda Program Sarjana IAIN Parepare')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819937.png" alt="Wisuda SH">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Kelulusan</span>
+            <h3>Sarjana Hukum (S.H.) Wisuda IAIN Parepare</h3>
+            <span class="cert-date">26 Agustus 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819952.png', 'Sertifikasi Ma\'had Al-Jami\'ah IAIN Parepare - Intermediate Level')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819952.png" alt="Mahad Al Jamiah">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Sertifikasi</span>
+            <h3>Tes Sertifikasi Ma'had Al-Jami'ah (Predikat A)</h3>
+            <span class="cert-date">05 September 2022</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('1715674819970.png', 'Pelatihan Kader Kewilayahan (PKK) - Ikatan Alumni Al Risalah Batetangnga')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="1715674819970.png" alt="PKK Alumni Al Risalah">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Kemasyarakatan</span>
+            <h3>Pelatihan Kader Kewilayahan (PKK)</h3>
+            <span class="cert-date">02 Juni 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 13 -->
+      <div class="card-wrapper">
+        <div class="cert-card" onclick="openLightbox('Sertifikat .png', 'Sertifikat Kajian Muslimat II')">
+          <div class="shine"></div>
+          <div class="img-container">
+            <img src="Sertifikat .png" alt="Kajian Muslimat II">
+          </div>
+          <div class="cert-info">
+            <span class="cert-tag">Keagamaan</span>
+            <h3>Sertifikat Kajian Muslimat II</h3>
+            <span class="cert-date">Tahun 2026</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Lightbox Container -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
+    <div class="lightbox-content">
+      <img src="" id="lightbox-img" alt="Pratinjau Sertifikat">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxCaption.textContent = caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close') || e.target.nodeName === 'BUTTON') {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // 3D Tilt Effect Logic
+    const wrappers = document.querySelectorAll('.card-wrapper');
+    
+    wrappers.forEach(wrapper => {
+      const card = wrapper.querySelector('.cert-card');
+      const shine = wrapper.querySelector('.shine');
+      
+      wrapper.addEventListener('mousemove', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x position within element
+        const y = e.clientY - rect.top;  // y position within element
+        
+        // Calculate tilt
+        const xc = rect.width / 2;
+        const yc = rect.height / 2;
+        const angleX = (yc - y) / 10; // vertical tilt degree limit
+        const angleY = (x - xc) / 10; // horizontal tilt degree limit
+        
+        // Apply tilt transform
+        card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+        
+        // Dynamic shine position
+        const percentageX = (x / rect.width) * 100;
+        const percentageY = (y / rect.height) * 100;
+        shine.style.background = `radial-gradient(circle at ${percentageX}% ${percentageY}%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%)`;
+      });
+      
+      wrapper.addEventListener('mouseleave', () => {
+        // Reset transform on mouse leave
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
+        shine.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%)';
+      });
+      
+      wrapper.addEventListener('mouseenter', () => {
+        card.style.transition = 'none'; // remove transition for smooth follow
+      });
+    });
+  </script>
+</body>
+</html>
